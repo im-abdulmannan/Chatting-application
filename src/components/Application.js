@@ -30,6 +30,7 @@ import { FaUserEdit } from "react-icons/fa";
 import { GoSignOut } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase/firebase";
+import theme from "../theme";
 import EditProfile from "./EditProfile";
 import Rooms from "./Rooms";
 
@@ -48,16 +49,16 @@ const ripple = keyframes`
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   badge: {
-    backgroundColor: "#44b700",
-    color: "#44b700",
-    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+    backgroundColor: "#44b700 !important",
+    color: "#44b700 !important",
+    boxShadow: `0 0 0 2px ${theme.palette.background.paper} !important`,
     "&::after": {
       position: "absolute",
       top: 0,
       left: 0,
-      width: "100px",
-      height: "100px",
-      borderRadius: "50%",
+      width: "100px !important",
+      height: "100px !important",
+      borderRadius: "50% !important",
       border: "1px solid currentColor",
       content: '""',
     },
@@ -67,7 +68,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: {
     display: "flex",
   },
@@ -104,43 +105,43 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     [theme.breakpoints.up("sm")]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
+      width: `calc(100% - ${drawerWidth}px) !important`,
+      marginLeft: `${drawerWidth} !important`,
     },
-    backgroundColor: "#22273b",
+    backgroundColor: "#22273b !important",
     color: "#dcddde",
     boxShadow:
-      "0 1px 0 rgba(4,4,5,0.2),0 1.5px 0 rgba(6,6,7,0.05),0 2px 0 rgba(4,4,5,0.05);",
+      "0 1px 0 rgba(4,4,5,0.2),0 1.5px 0 rgba(6,6,7,0.05),0 2px 0 rgba(4,4,5,0.05); !important",
   },
   menuButton: {
     marginRight: theme.spacing(2),
     [theme.breakpoints.up("sm")]: {
-      display: "none",
+      display: "none !important",
     },
   },
   // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
+  toolbar: `${theme.mixins.toolbar} !important`,
   drawerPaper: {
     width: drawerWidth,
-    backgroundColor: "#171c2e",
-    color: "white",
+    backgroundColor: "#171c2e !important",
+    color: "white !important",
   },
   sideToolBar: {
-    backgroundColor: "#171c2e",
-    color: "#fff",
+    backgroundColor: "#171c2e !important",
+    color: "#fff !important",
     lineHeight: 1.6,
     boxShadow:
-      "0 1px 0 rgba(4,4,5,0.2),0 1.5px 0 rgba(6,6,7,0.05),0 2px 0 rgba(4,4,5,0.05);",
-    minHeight: "2.2rem",
+      "0 1px 0 rgba(4,4,5,0.2),0 1.5px 0 rgba(6,6,7,0.05),0 2px 0 rgba(4,4,5,0.05); !important",
+    minHeight: "2.2rem !important",
   },
   sideToolBarText: {
-    letterSpacing: "0.2em",
-    fontWeight: "900",
+    letterSpacing: "0.2em !important",
+    fontWeight: "900 !important",
   },
   title: {
     flexGrow: 1,
   },
-}));
+});
 
 const Application = ({ window }) => {
   const classes = useStyles();
@@ -228,7 +229,7 @@ const Application = ({ window }) => {
             />
           </StyledBadge>
 
-          <Typography variant="h6" className={classes.avatarDisplayName}>
+          <Typography component={"h6"} className={classes.avatarDisplayName}>
             {userDetails.displayName}
           </Typography>
         </div>

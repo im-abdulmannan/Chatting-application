@@ -1,11 +1,11 @@
 import { makeStyles } from "@mui/styles";
 import { onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
-// import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Application from "./components/Application";
-import Chat from "./components/Chat";
-import Home from "./components/Home";
+import "./App.css";
+import Application from './components/Application';
+import Chat from './components/Chat';
+import Home from './components/Home';
 import Login from "./components/Login";
 import { auth } from "./firebase/firebase";
 

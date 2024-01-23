@@ -5,6 +5,7 @@ import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import loginImg from "../assets/login.png";
 import { auth } from "../firebase/firebase";
+import theme from "../theme";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,10 +25,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "auto",
   },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-    color: "#d9d9d9",
-  },
 }));
 
 const Login = () => {
@@ -37,24 +34,21 @@ const Login = () => {
     try {
       const result = await signInWithPopup(auth, new GoogleAuthProvider());
       const user = result.user;
-      console.log("🚀 ~ loginHandler ~ user:", user)
-  
+
       // Save user data to localStorage
       const userData = {
         displayName: user.displayName,
         email: user.email,
         uid: user.uid,
-        photoURL: user.photoURL
+        photoURL: user.photoURL,
       };
-  
-      localStorage.setItem('userDetails', JSON.stringify(userData));
-  
-      console.log('User data saved to localStorage:', userData);
+
+      localStorage.setItem("userDetails", JSON.stringify(userData));
+
+      console.log("User data saved to localStorage:", userData);
     } catch (error) {
-      console.error('Error during login:', error.message);
+      console.error("Error during login:", error.message);
     }
-
-
   };
 
   return (
@@ -62,14 +56,22 @@ const Login = () => {
       <div className={classes.paper}>
         <img src={loginImg} className={classes.mainImg} alt="signup img" />
 
-        <Typography variant="h4" style={{ paddingTop: "15px" }}>
-          Sign in to Chatify
+        <Typography
+          variant="h4"
+          style={{
+            paddingTop: "15px",
+          }}
+        >
+          Sign in to Live hangout
         </Typography>
 
         <Button
           variant="outlined"
           color="primary"
-          className={classes.submit}
+          style={{
+            margin: theme.spacing(3, 0, 2),
+            color: "#d9d9d9",
+          }}
           startIcon={<FcGoogle />}
           onClick={loginHandler}
         >

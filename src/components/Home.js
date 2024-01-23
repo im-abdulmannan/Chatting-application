@@ -12,18 +12,18 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { db } from "../firebase/firebase";
 
-const useStyles = makeStyles({
-  heading: {
-    fontSize: "2.2em",
-    fontWeight: "700",
-  },
+const useStyles = makeStyles((theme) => ({
   root: {
     paddingTop: "50px",
     paddingBottom: "25px",
     color: "#f0f0f0",
   },
+  heading: {
+    fontSize: "2.2em !important",
+    fontWeight: "700 !important",
+  },
   subHeading: {
-    fontSize: "1.6em",
+    fontSize: "1.6em !important",
   },
   channelDiv: {
     padding: "15px",
@@ -36,10 +36,10 @@ const useStyles = makeStyles({
     alignItems: "center",
   },
   square: {
-    height: "80px",
-    width: "80px",
-    backgroundColor: "#8fabbd66",
-    fontSize: "2rem",
+    height: "80px !important",
+    width: "80px !important",
+    backgroundColor: "#8fabbd66 !important",
+    fontSize: "2rem !important",
   },
   rootChannel: {
     height: "calc(100vh - 185px)",
@@ -52,16 +52,16 @@ const useStyles = makeStyles({
     fontSize: "1.2rem",
   },
   channelCard: {
-    backgroundColor: "#1e2439",
+    backgroundColor: "#1e2439 !important",
     boxShadow:
-      "0px 3px 4px -1px rgb(0 0 0 / 17%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)",
-    color: "rgb(220, 221, 222)",
+      "0px 3px 4px -1px rgb(0 0 0 / 17%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%) !important",
+    color: "rgb(220, 221, 222) !important",
   },
   title: {
     fontSize: "2.2em",
     textDecoration: "underline",
   },
-});
+}));
 
 const Home = () => {
   const classes = useStyles();

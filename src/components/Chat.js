@@ -1,5 +1,5 @@
 import Picker from "@emoji-mart/react";
-import { Grid, IconButton, TextField } from "@mui/material";
+import { Grid, IconButton, TextField, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import {
   Timestamp,
@@ -102,6 +102,7 @@ const Chat = () => {
 
   const addEmoji = (e) => {
     setUserNewMsg(userNewMsg + e.native);
+    setEmojiBtn(false);
   };
 
   useEffect(() => {
@@ -181,7 +182,9 @@ const Chat = () => {
       {modalState ? <FileUpload setState={openModal} file={file} /> : null}
       <Grid item xs={12} className={classes.roomName}>
         <BiHash className={classes.iconDesign} />
-        <h3 className={classes.roomNameText}>{channelName}</h3>
+        <Typography component={"h3"} className={classes.roomNameText}>
+          {channelName}
+        </Typography>
       </Grid>
 
       <Grid item xs={12} className={classes.chat}>
@@ -224,10 +227,9 @@ const Chat = () => {
           </IconButton>
           {emojiBtn ? (
             <div className={classes.pickerStyle}>
-              <Picker onSelect={addEmoji} theme="dark" navPosition="top" />
+              <Picker onEmojiSelect={addEmoji} theme="dark" autoFocus={true} />
             </div>
-          ) : // <Picker data={data} onEmojiSelect={console.log} />
-          null}
+          ) : null}
 
           <form
             autoComplete="off"
