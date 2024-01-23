@@ -1,23 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import { makeStyles } from "@mui/styles";
+import { onAuthStateChanged } from "firebase/auth";
+import React, { useEffect, useState } from "react";
+// import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import Application from "./components/Application";
+import Chat from "./components/Chat";
+import Home from "./components/Home";
+import Login from "./components/Login";
+import { auth } from "./firebase/firebase";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+  },
+  toolbar: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    backGroundColor: "#22273b !important",
+    height: "100vh",
+  },
+}));
 
 function App() {
+  const classes = useStyles();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user.uid);
+      } else {
+        setUser(null);
+      }
+    });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!user ? (
+        <Login />
+      ) : (
+        <div className={classes.root}>
+          <Application />
+          <main className={classes.content}>
+            <div className={classes.toolbar} style={{ minHeight: "50px" }}>
+              <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route path="/channel/:id" element={<Chat />} />
+              </Routes>
+            </div>
+          </main>
+        </div>
+      )}
     </div>
   );
 }
