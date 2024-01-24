@@ -49,6 +49,7 @@ const useStyles = makeStyles({
     padding: "15px",
     display: "flex",
     color: "#e5e5e5",
+    zIndex: 120,
   },
   roomNameText: {
     marginBlockEnd: 0,

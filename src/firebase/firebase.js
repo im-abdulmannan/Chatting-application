@@ -1,35 +1,24 @@
-// import { initializeApp } from "firebase/app";
-// import "firebase/auth";
-// import "firebase/database";
-
-// import { initializeApp } from "firebase/app";
-// import { getAuth } from "firebase/auth";
-// import { getDatabase } from "firebase/database";
-
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-// const firebaseConfig = {
-//   apiKey: process.env.REACT_APP_API_KEY,
-//   authDomain: process.env.REACT_APP__AUTH_DOMAIN,
-//   projectId: process.env.REACT_APP_PROJECTID,
-//   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-//   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-//   appId: process.env.REACT_APP_APPID,
-//   measurementId: process.env.REACT_APP_MEASUREMENT_ID,
-// };
+const apiKey = process.env.REACT_APP_API_KEY;
+const authDomain = process.env.REACT_APP__AUTH_DOMAIN;
+const projectId = process.env.REACT_APP_PROJECTID;
+const storageBucket = process.env.REACT_APP_STORAGE_BUCKET;
+const messagingSenderId = process.env.REACT_APP_MESSAGING_SENDER_ID;
+const appId = process.env.REACT_APP_APPID;
+const measurementId = process.env.REACT_APP_MEASUREMENT_ID;
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAqSXRX1hz9QqRqNZ0avrHOO1O_VxjcEuA",
-  authDomain: "chatify-afab3.firebaseapp.com",
-  databaseURL: "https://chatify-afab3-default-rtdb.firebaseio.com",
-  projectId: "chatify-afab3",
-  storageBucket: "chatify-afab3.appspot.com",
-  messagingSenderId: "446474111653",
-  appId: "1:446474111653:web:b686b51386c121a742db4c",
-  measurementId: "G-7TTQSKQVC3",
+  apiKey: apiKey,
+  authDomain: authDomain,
+  projectId: projectId,
+  storageBucket: storageBucket,
+  messagingSenderId: messagingSenderId,
+  appId: appId,
+  measurementId: measurementId,
 };
 
 const app = initializeApp(firebaseConfig);
